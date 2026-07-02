@@ -10,15 +10,21 @@ O repositório é a própria skill: `SKILL.md` + a pasta `resources/` com os arq
 A skill precisa ficar em `~/.claude/skills/criar-login-saea/` (skill pessoal) ou em
 `.claude/skills/criar-login-saea/` dentro de um projeto (skill compartilhada via git do projeto).
 
+Entre na sua própria pasta de skills e clone com o nome `criar-login-saea`.
+O `~` já aponta para a pasta do usuário logado — cada pessoa cai no próprio perfil,
+sem caminho fixo de ninguém.
+
 ### Windows (PowerShell)
 
 ```powershell
-git clone https://github.com/BrunoSaeaOrg/SkillLoginSaea.git "$env:USERPROFILE\.claude\skills\criar-login-saea"
+mkdir "$HOME\.claude\skills" -Force
+git clone https://github.com/BrunoSaeaOrg/SkillLoginSaea.git "$HOME\.claude\skills\criar-login-saea"
 ```
 
-### macOS / Linux
+### macOS / Linux / Git Bash
 
 ```bash
+mkdir -p ~/.claude/skills
 git clone https://github.com/BrunoSaeaOrg/SkillLoginSaea.git ~/.claude/skills/criar-login-saea
 ```
 
