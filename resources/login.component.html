@@ -1,0 +1,74 @@
+<div class="auth-page-wrapper">
+  <header class="auth-top-header">
+    <img src="assets/img/logo-saea-header.png" alt="Logo SAEA" class="header-logo">
+    <h2 class="header-title">SAEA - Nome do Sistema</h2>
+  </header>
+
+  <div class="login-container">
+    <mat-card class="login-card">
+      <div class="login-header-section">
+        <img src="assets/img/logo.png" alt="SAEA Logo" class="logo-login">
+        <mat-card-title>Entre com suas credenciais do <br class="mobile-break">TOTVS</mat-card-title>
+      </div>
+
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Usuário</mat-label>
+            <mat-icon matPrefix class="responsive-icon">person</mat-icon>
+            <input matInput type="text" formControlName="usuario" placeholder="Digite seu usuário">
+            @if (loginForm.get('usuario')?.invalid && loginForm.get('usuario')?.touched) {
+            <mat-error>
+              @if (loginForm.get('usuario')?.errors?.['required']) {
+              <span>Usuário é obrigatório</span>
+              }
+            </mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Senha</mat-label>
+            <mat-icon matPrefix class="responsive-icon">lock</mat-icon>
+            <input matInput [type]="obscurePassword ? 'password' : 'text'" formControlName="password"
+              placeholder="Digite sua senha">
+            <span matSuffix (click)="togglePassword()" class="icon-suffix password-toggle" style="cursor: pointer;">
+              <mat-icon class="responsive-icon">{{ obscurePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </span>
+            @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+            <mat-error>
+              @if (loginForm.get('password')?.errors?.['required']) {
+              <span>Senha é obrigatória</span>
+              }
+            </mat-error>
+            }
+          </mat-form-field>
+
+          <button mat-raised-button class="login-button" [disabled]="isLoading || loginForm.invalid"
+            [disableRipple]="isLoading" [class.loading]="isLoading" type="submit">
+            <span class="button-content">
+              @if (isLoading) {
+              <mat-spinner diameter="16" [strokeWidth]="3" color="accent" class="btn-spinner"
+                aria-label="Carregando"></mat-spinner>
+              }
+              @if (!isLoading) {
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#fff" aria-hidden="true"
+                width="20" height="20" class="login-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M2 12h12.88M12.65 8.65L16 12l-3.35 3.35M21.5 13v2.26c0 4.47-1.79 6.26-6.26 6.26h-.13c-4.02 0-5.87-1.45-6.2-4.99M8.9 7.56c.31-3.6 2.16-5.07 6.21-5.07h.13c4.47 0 6.26 1.79 6.26 6.26" />
+              </svg>
+              }
+              <span>{{ isLoading ? 'Entrando...' : 'Entrar' }}</span>
+            </span>
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <footer class="saea-footer">
+    <div class="footer-content">
+      <img src="assets/img/logo-saea-navegador.png" alt="Selo SAEA" height="14">
+      <span>SAEA © {{ currentYear }} DESENVOLVIDO POR SISTEMAS SAEA</span>
+    </div>
+  </footer>
+</div>
