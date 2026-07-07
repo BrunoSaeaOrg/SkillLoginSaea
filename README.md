@@ -3,39 +3,49 @@
 Skill do Claude Code que cria a tela de login padrão SAEA (HTML, CSS, TS) — header com a
 cor institucional, logo do sistema, painel centralizado e rodapé de copyright SAEA.
 
-O repositório é a própria skill: `SKILL.md` + a pasta `resources/` com os arquivos de referência.
+Este repositório é distribuído como um **plugin do Claude Code**: a instalação é feita
+pelos comandos `/plugin`, sem precisar clonar nada nem criar pasta na mão.
 
-## Como instalar
+## Como instalar (recomendado — via plugin)
 
-A skill precisa ficar em `~/.claude/skills/criar-login-saea/` (skill pessoal) ou em
-`.claude/skills/criar-login-saea/` dentro de um projeto (skill compartilhada via git do projeto).
+Dentro do Claude Code, rode os dois comandos abaixo (uma vez só):
 
-Entre na sua própria pasta de skills e clone com o nome `criar-login-saea`.
-O `~` já aponta para a pasta do usuário logado — cada pessoa cai no próprio perfil,
-sem caminho fixo de ninguém.
-
-### Windows (PowerShell)
-
-```powershell
-mkdir "$HOME\.claude\skills" -Force
-git clone https://github.com/BrunoSaeaOrg/SkillLoginSaea.git "$HOME\.claude\skills\criar-login-saea"
+```text
+/plugin marketplace add BrunoSaeaOrg/SkillLoginSaea
+/plugin install criar-login-saea@SkillLoginSaea
 ```
 
-### macOS / Linux / Git Bash
+O Claude Code baixa o plugin, coloca tudo no lugar certo e ativa a skill sozinho.
+Depois disso ela fica disponível como `/criar-login-saea`.
 
-```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/BrunoSaeaOrg/SkillLoginSaea.git ~/.claude/skills/criar-login-saea
-```
-
-> Importante: o nome da pasta de destino deve ser `criar-login-saea` (igual ao campo
-> `name:` no `SKILL.md`), não `SkillLoginSaea`.
-
-Reinicie o Claude Code e a skill fica disponível como `/criar-login-saea`.
+> O usuário **não digita nenhum comando git**. O Claude Code usa o git internamente
+> para baixar o plugin, então o git só precisa estar **instalado** na máquina
+> (pré-requisito normal de quem usa Claude Code).
 
 ## Como atualizar
 
-```bash
-cd ~/.claude/skills/criar-login-saea
-git pull
+```text
+/plugin marketplace update SkillLoginSaea
+```
+
+Isso puxa a versão mais nova publicada no repositório.
+
+## Como desinstalar
+
+```text
+/plugin uninstall criar-login-saea@SkillLoginSaea
+```
+
+## Estrutura do repositório
+
+```text
+SkillLoginSaea/
+├── .claude-plugin/
+│   ├── plugin.json          # metadados do plugin
+│   └── marketplace.json     # permite o /plugin marketplace add
+├── skills/
+│   └── criar-login-saea/
+│       ├── SKILL.md         # instruções da skill
+│       └── resources/       # arquivos de referência (login component, toast, etc.)
+└── README.md
 ```

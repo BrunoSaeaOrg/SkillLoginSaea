@@ -1,0 +1,20 @@
+{
+  "name": "SkillLoginSaea",
+  "owner": {
+    "name": "SAEA"
+  },
+  "plugins": [
+    {
+      "name": "criar-login-saea",
+      "description": "Cria a tela de login padrão SAEA (HTML, CSS, TS) — header com cor institucional, logo do sistema, painel centralizado (Material UI) e rodapé de copyright SAEA.",
+      "author": "SAEA",
+      "license": "MIT",
+      "homepage": "https://github.com/BrunoSaeaOrg/SkillLoginSaea",
+      "source": {
+        "type": "git",
+        "repository": "https://github.com/BrunoSaeaOrg/SkillLoginSaea.git",
+        "path": "."
+      }
+    }
+  ]
+}
