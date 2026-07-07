@@ -70,3 +70,25 @@ Ao implementar o login, siga esta recomendação para consumir a API da TOTVS RM
 17. **Abordagem Direta (Basic Auth)**: Se for estritamente requisitado pelo usuário consumir o RM direto do Angular: configure o arquivo `proxy.conf.json` para criar uma rota que passe pelo proxy (evitando bloqueio de CORS). No `auth.service.ts`, implemente as chamadas HTTP enviando o cabeçalho de autenticação utilizando Base64: `Authorization: Basic ' + btoa(usuario + ':' + senha)`.
 
 18. **MENSAGENS DE ERRO (SEGURANÇA)**: Ao tratar a requisição de login (ex: no `login.component.ts`), **NUNCA** exiba as mensagens de erro brutas devolvidas pelo ERP/API para o usuário (pois podem conter dados sensíveis ou jargões de sistema). Intercepte o erro: se for 401, exiba um Toast genérico `"Usuário ou senha inválidos."`. Para demais erros, exiba `"Falha de comunicação com o servidor."`.
+
+19. **PARA USAR A SKILL**: A skill precisa ser copiada para a pasta de skills do Claude Code, com o nome exato `criar-login-saea` (não `SkillLoginSaea`). No PowerShell, execute:
+
+    ```powershell
+    mkdir "$HOME\.claude\skills" -Force
+    git clone https://github.com/BrunoSaeaOrg/SkillLoginSaea.git "$HOME\.claude\skills\criar-login-saea"
+    ```
+
+    Isso instala a skill como pessoal (disponível em qualquer projeto seu). Se preferir compartilhá-la via git do projeto atual, clone em `.claude/skills/criar-login-saea/` dentro do repositório. Depois, reinicie o Claude Code.
+
+    **Como usar:** Uma vez instalada, invoque com `/criar-login-saea` (o nome vem do campo `name:` no frontmatter do `SKILL.md`). Ao rodar, ela vai:
+    - Verificar se já existe uma tela de login no projeto (fazendo diff, não substituição cega);
+    - Copiar os arquivos de referência (`login.component.html/scss/ts`) de `resources/`;
+    - Ajustar imagens/logos, favicon, ícones responsivos, toast de notificação e a integração com o `AuthService`/roteamento existente;
+    - Seguir todo o padrão visual SAEA (header, card centralizado, footer institucional).
+
+    **Para atualizar depois:**
+
+    ```powershell
+    cd ~/.claude/skills/criar-login-saea
+    git pull
+    ```
