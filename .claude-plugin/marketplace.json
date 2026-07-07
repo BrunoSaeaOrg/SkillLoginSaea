@@ -10,11 +10,7 @@
       "author": "SAEA",
       "license": "MIT",
       "homepage": "https://github.com/BrunoSaeaOrg/SkillLoginSaea",
-      "source": {
-        "type": "git",
-        "repository": "https://github.com/BrunoSaeaOrg/SkillLoginSaea.git",
-        "path": "."
-      }
+      "source": "./"
     }
   ]
 }
