@@ -10,6 +10,8 @@ pelos comandos `/plugin`, sem precisar clonar nada nem criar pasta na mão.
 
 Dentro do Claude Code, rode os dois comandos abaixo (uma vez só):
 
+Para usar os comandos abaixo abra o terminal na sua IDE, digite: claude, apos a instalação faça o login.
+Apos efetuar o login digite: claude e depois um comando por vez >>
 ```text
 /plugin marketplace add BrunoSaeaOrg/SkillLoginSaea
 /plugin install criar-login-saea@SkillLoginSaea
